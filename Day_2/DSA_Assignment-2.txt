@@ -1,0 +1,121 @@
+Name: Chaitali Anil Jadhav
+PRN: 250843420012
+Email : chaitalijadhav142@gmail.com
+
+package Stack_Examples;
+import java.util.*;
+
+
+        class TwoStacks {
+            int arr[];
+            int size;
+            int top1, top2;
+
+
+            // Constructor
+            TwoStacks(int n) {
+                size = n;
+                arr = new int[n];
+                top1 = -1;          // Stack 1 starts from left
+                top2 = n;           // Stack 2 starts from right
+            }
+
+
+            // TODO: push1
+            void push1(int x) {
+                if(top1 +1 < top2) {
+                top1++;
+                arr[top1]=x;
+                }
+                
+            }
+
+
+            // TODO: push2
+            void push2(int x) {
+                // your code here
+                    if(top2 - 1 > top1) {
+                    top2--;
+                    arr[top2]=x;
+                    }
+            }
+                    
+
+
+            // TODO: pop1
+            int pop1() {
+                // your code here
+                    if(top1 == -1) {
+                            System.out.println("stack is empty");
+                            return -1;
+                    }
+                    else {
+                    int temp=arr[top1];
+                top1--;
+                return temp;
+                }
+                    
+            }
+
+
+            // TODO: pop2
+            int pop2() {
+                // your code here
+                    if(top2==size) {
+                            System.out.println("stack is empty");
+                            return -1;
+                    }
+                    else {
+                            int temp=arr[top2];
+                        top2++;
+                        return temp;
+                        }
+            }
+        }
+
+
+package Stack_Examples;
+
+
+import java.util.Scanner;
+
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        TwoStacks ts = new TwoStacks(100);  // default size
+
+
+        while (sc.hasNext()) {
+            String op = sc.next();
+
+
+            switch(op) {
+
+
+                case "push1":
+                    ts.push1(sc.nextInt());
+                    break;
+
+
+                case "push2":
+                    ts.push2(sc.nextInt());
+                    break;
+
+
+                case "pop1":
+                    System.out.println(ts.pop1());
+                    break;
+
+
+                case "pop2":
+                    System.out.println(ts.pop2());
+                    break;
+
+
+                default:
+                    return;
+            }
+        }
+    }
+}
